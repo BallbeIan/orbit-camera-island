@@ -122,7 +122,7 @@ class CollapsedView(ctx: Context) : LinearLayout(ctx) {
 
 /**
  * The row level with the camera: [app logo] [camera gap] [name / status]. Both sides get the same width so the
- * camera stays in the middle of the pill; the logo is centred between the left edge and the camera, the name
+ * camera stays in the middle of the pill; the logo sits at the far left of the pill, the name is centred
  * between the camera and the right edge.
  */
 class CameraStrip(ctx: Context) : android.view.ViewGroup(ctx) {
@@ -136,7 +136,7 @@ class CameraStrip(ctx: Context) : android.view.ViewGroup(ctx) {
     init {
         icon.scaleType = ImageView.ScaleType.CENTER_CROP
         roundClip(icon, 0f, oval = true)
-        left.addView(icon, FrameLayout.LayoutParams(ctx.dpi(26), ctx.dpi(26), Gravity.CENTER))
+        left.addView(icon, FrameLayout.LayoutParams(ctx.dpi(26), ctx.dpi(26), Gravity.START or Gravity.CENTER_VERTICAL))
         styleText(title, 14f, Color.WHITE, bold = true)
         title.isSingleLine = true
         title.ellipsize = TextUtils.TruncateAt.END
